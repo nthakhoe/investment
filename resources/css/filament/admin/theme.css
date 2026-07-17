@@ -1,0 +1,12 @@
+.fi-logo {
+    height: 60px !important;
+}
+
+.fi-simple-layout {
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+}
+
+.fi-simple-header-heading {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}

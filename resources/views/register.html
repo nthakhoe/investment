@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Investor Account</title>
+
+<style>
+	body {
+background: #f4f7fb;
+font-family: 'Segoe UI', sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+
+.register-container {
+background: white;
+padding: 40px;
+border-radius: 14px;
+width: 420px;
+box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+h2 {
+text-align: center;
+margin-bottom: 10px;
+color: #1e88e5;
+}
+
+.subtitle {
+text-align: center;
+margin-bottom: 25px;
+color: #777;
+}
+
+label {
+display: block;
+margin-top: 15px;
+font-weight: 500;
+}
+
+input, select {
+width: 100%;
+padding: 12px;
+margin-top: 6px;
+border-radius: 6px;
+border: 1px solid #ddd;
+}
+
+button {
+margin-top: 25px;
+width: 100%;
+padding: 14px;
+background: #1e88e5;
+color: white;
+border: none;
+border-radius: 6px;
+font-size: 16px;
+cursor: pointer;
+}
+
+button:hover {
+background: #1565c0;
+}
+
+.checkbox-group {
+margin-top: 15px;
+font-size: 14px;
+}
+
+.login-link {
+margin-top: 20px;
+text-align: center;
+}
+</style>
+
+<link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+
+<div class="register-container">
+
+<h2>Create Your Investment Account</h2>
+<p class="subtitle">Start building your portfolio today</p>
+
+<form id="registerForm" action="/register" method="POST">
+
+<!-- Laravel CSRF -->
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+<label>Full Name</label>
+<input type="text" name="name" required>
+
+<label>Email Address</label>
+<input type="email" name="email" required>
+
+<label>Mobile Number</label>
+<input type="tel" name="phone" placeholder="+266 or +27 format" required>
+
+<label>Country</label>
+<select name="country" required>
+<option value="">Select Country</option>
+<option>Lesotho</option>
+<option>South Africa</option>
+</select>
+
+<label>Password</label>
+<input type="password" id="password" name="password" required>
+
+<label>Confirm Password</label>
+<input type="password" name="password_confirmation" required>
+
+<div class="checkbox-group">
+<label>
+<input type="checkbox" required>
+I understand that investments involve risk and returns are not guaranteed.
+</label>
+</div>
+
+<div class="checkbox-group">
+<label>
+<input type="checkbox" required>
+I agree to the Terms & Conditions and Privacy Policy.
+</label>
+</div>
+
+<button type="submit">Register Account</button>
+
+<p class="login-link">
+Already registered? <a href="/login">Login here</a>
+</p>
+
+</form>
+
+</div>
+
+<script src="register.js"></script>
+
+</body>
+</html>
