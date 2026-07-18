@@ -1,69 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
 
-    <title>Invexorite Wealth Dashboard</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
 
+    <meta name="csrf-token"
+          content="{{ csrf_token() }}">
+
+    <title>@yield('title', 'Invexorite Wealth')</title>
+
+    <meta name="description"
+          content="@yield('description','Grow your wealth one egg at a time with Invexorite Wealth.')">
+
+    <meta name="keywords"
+          content="Investment, Wealth, Crypto, Chicken Investment, Eggs, Invexorite">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Icons -->
     <link rel="stylesheet"
-          href="{{ asset('css/dashboard.css') }}">
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="{{ asset('css/home.css') }}">
+
+    @stack('styles')
 
 </head>
 
 <body>
 
-<header class="dashboard-header">
+    {{-- Main Content --}}
+    <main>
 
-    <div class="logo">
-        Invexorite Wealth
-    </div>
+        @yield('content')
 
-    <nav>
-        <a href="#">Dashboard</a>
-        <a href="#">My Investments</a>
-        <a href="#">Transactions</a>
-        <a href="{{ route('investor.deposits.create') }}"
-           class="btn btn-primary">
-            Deposit Funds
-        </a>
+    </main>
 
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <button class="logout-btn">Logout</button>
-        </form>
-    </nav>
+    {{-- Back To Top --}}
+    <button id="backToTop">
 
-</header>
+        <i class="fa-solid fa-arrow-up"></i>
 
+    </button>
 
-<main class="dashboard-content">
+    <!-- Javascript -->
 
-    @if(session('success'))
-        <div class="alert success">
-            {{ session('success') }}
-        </div>
-    @endif
+    <script src="{{ asset('js/home.js') }}"></script>
 
-
-    @if(session('error'))
-        <div class="alert error">
-            {{ session('error') }}
-        </div>
-    @endif
-
-
-    @yield('content')
-
-</main>
-
-
-<footer class="dashboard-footer">
-
-    © {{ date('Y') }} Invexorite Wealth
-
-</footer>
+    @stack('scripts')
 
 </body>
+
 </html>
