@@ -89,6 +89,16 @@
 
     <section class="hero">
 
+    <div class="hero-decorations">
+
+        <img src="/images/egg.png" class="floating-egg egg-1">
+
+        <img src="/images/egg.png" class="floating-egg egg-2">
+
+        <img src="/images/egg.png" class="floating-egg egg-3">
+
+    </div>
+
         <div class="container hero-grid">
 
             <div class="hero-left">
